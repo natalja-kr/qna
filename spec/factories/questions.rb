@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :question do
-    title "MyString MyStringMyStringMyStringMyString"
+    title "MyString"
     body "MyText"
   end
 

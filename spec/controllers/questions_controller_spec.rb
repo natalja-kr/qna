@@ -30,6 +30,8 @@ RSpec.describe QuestionsController, :type => :controller do
   end
 
   describe 'GET #new' do
+    user_sign_in
+
     before { get :new }
 
     it 'assigns a new Question to @question' do
@@ -54,6 +56,7 @@ RSpec.describe QuestionsController, :type => :controller do
   end
 
   describe 'POST #create' do
+    user_sign_in
     context 'with valid attributes' do
       it 'saves the new question in the database' do
         expect { post :create, question: attributes_for(:question) }.to change(Question, :count).by(1)
@@ -85,9 +88,9 @@ RSpec.describe QuestionsController, :type => :controller do
       end
 
       it 'changes question attributes' do
-        patch :update, id: question, question: { title: 'new title MyString MyStringMyStringMyStringMyString', body: 'new body'}
+        patch :update, id: question, question: { title: 'new title', body: 'new body'}
         question.reload
-        expect(question.title).to eq 'new title MyString MyStringMyStringMyStringMyString'
+        expect(question.title).to eq 'new title'
         expect(question.body).to eq 'new body'
       end
 
@@ -102,7 +105,7 @@ RSpec.describe QuestionsController, :type => :controller do
 
       it 'does not change question attributes' do
         question.reload
-        expect(question.title).to eq 'MyString MyStringMyStringMyStringMyString'
+        expect(question.title).to eq 'MyString'
         expect(question.body).to eq 'MyText'
       end
 

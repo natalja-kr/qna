@@ -27,6 +27,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'slim-rails'
+gem 'devise'
+
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -34,6 +39,8 @@ group :test, :development do
 end
 group :test do
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
