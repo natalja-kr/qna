@@ -5,7 +5,13 @@
           ul.button-group.right
             li = link_to 'Edit', edit_question_path(@question), class: 'button secondary small'
             li = link_to 'Delete', @question, method: :delete, data: { confirm: true }, class: 'button alert small'
-= form_for [@question,@answer] do |f|
+
+
+.answers
+  =render 'answers'
+
+= form_for [@question,@answer], remote: true do |f|
   = f.label :body, 'Your answer'
+  .answer-errors
   = f.text_area :body
   = f.submit 'Create'

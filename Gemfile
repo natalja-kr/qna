@@ -43,6 +43,7 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'capybara-webkit'
+  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password
