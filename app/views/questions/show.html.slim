@@ -1,0 +1,5 @@
+.well
+  h3=@question.title
+  p=@question.body
+  - if current_user == @question.user
+    p=link_to 'Delete this my question',@question, method: :delete, data: { confirm: true }

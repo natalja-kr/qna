@@ -11,6 +11,7 @@ feature 'User sign in', %q{
     sign_in(user)
 
     expect(page).to have_content 'Signed in successfully.'
+    expect(page).to have_content 'Sign out'
     expect(current_path).to eq root_path
   end
 
