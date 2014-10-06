@@ -29,7 +29,7 @@ feature 'User edit profile', %q{
       fill_in 'Password', with: data[:password]
       fill_in 'Password confirmation', with: data[:password_confirmation]
       click_button 'Update'
-    save_and_open_page
+
     expect(page).to have_content 'Edit User'
   end
 end

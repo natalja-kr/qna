@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-
+    @question.user = current_user
     if @question.save
       flash[:notice] = 'Your question successfully created.'
       redirect_to @question
@@ -29,8 +29,10 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
+      flash[:notice] = 'Your question successfully update.'
       redirect_to @question
     else
+      flash[:notice] = 'You have entered incorrect data.'
       render :edit
     end
   end

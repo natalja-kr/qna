@@ -14,16 +14,18 @@ feature 'Delete question', %q{
     sign_in(user)
 
     visit question_path(question)
-    click_on 'Delete this my question'
+    click_on 'Delete'
 
     expect(current_path).to eq questions_path
     expect(page).to have_content 'Your question successfully delete.'
   end
 
   scenario "The user removes the opponent's question" do
-    visit question_path(question)
+    sign_in(user)
+    new_question = create(:question, user: create(:user))
+    visit question_path(new_question)
 
-    expect(page).not_to have_link 'Delete this my question'
+    expect(page).not_to have_link 'Delete'
   end
 
 end
