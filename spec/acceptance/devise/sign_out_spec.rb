@@ -12,6 +12,7 @@ feature 'User sign out', %q{
     page.driver.submit :delete, "/users/sign_out", {}
 
     expect(page).to have_content 'Signed out successfully.'
+    expect(page).to have_content 'Sign in'
     expect(current_path).to eq root_path
   end
 end
