@@ -6,7 +6,7 @@ feature 'Edit question', %q{
   I want to be able to edit question
 } do
 
-  given(:user) {create(:user)}
+  given(:user) { create(:user) }
   given(:question) { create(:question, user: user) }
 
   scenario 'Owner edit question with valid data' do
@@ -38,8 +38,7 @@ feature 'Edit question', %q{
     fill_in 'Title', with: ""
     fill_in 'Body', with: ""
     click_on 'Update'
-    save_and_open_page
-    #expect(current_path).to eq edit_question_path(question)
+
     expect(page).to have_content 'You have entered incorrect data.'
   end
 
