@@ -1,12 +1,5 @@
-.well
-  h3=@question.title
-  p=@question.body
-  -if user_signed_in? && @question.user == current_user
-          ul.button-group.right
-            li = link_to 'Edit', edit_question_path(@question), class: 'button secondary small'
-            li = link_to 'Delete', @question, method: :delete, data: { confirm: true }, class: 'button alert small'
-
-
+.question
+  =render 'question'
 .answers
   =render 'answers'
 

@@ -29,13 +29,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_params)
-      flash[:notice] = 'Your question successfully update.'
-      redirect_to @question
-    else
-      flash[:notice] = 'You have entered incorrect data.'
-      render :edit
-    end
+    @question.update(question_params)
+    #   flash[:notice] = 'Your question successfully update.'
+    # else
+    #   flash[:notice] = 'You have entered incorrect data.'
+    # end
   end
 
   def destroy

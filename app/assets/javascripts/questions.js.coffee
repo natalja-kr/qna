@@ -4,6 +4,10 @@
 jQuery ->
   $('.edit-answer-link').click ->
     id = $(this).data('answerid');
-    $('#edit-answer-'+id).show();
+    $('#edit-answer-'+id).toggle();
+    return false;
+  $('.edit-question-link').click ->
+    id = $(this).data('questionid');
+    $('#edit-question-'+id).toggle();
     return false;
 

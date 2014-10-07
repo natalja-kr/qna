@@ -5,5 +5,7 @@
     p
       = form_for [@question, answer], remote: true, html: { id: "edit-answer-#{answer.id}", class: 'edit-answer'} do |f|
         = f.label :body, "Answer"
+        p
         = f.text_area :body
+        p
         = f.submit 'Save'
