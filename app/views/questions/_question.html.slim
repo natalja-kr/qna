@@ -7,7 +7,7 @@
     = link_to 'Delete', @question, method: :delete, data: { confirm: true }, class: 'button alert small'
 
   .question-errors
-    = form_for(@question, remote: true, :html => { :class => "form-horizontal edit-question", id: "edit-question-#{@question.id}"}) do |f|
+    = form_for(@question, remote: true, :html => { class: "form-horizontal edit-question", id: "edit-question-#{@question.id}"}) do |f|
       .control-group
         = f.label :title, class: "control-lable"
         .controls

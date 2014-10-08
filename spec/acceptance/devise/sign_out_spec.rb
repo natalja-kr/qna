@@ -9,8 +9,7 @@ feature 'User sign out', %q{
   scenario 'Registered user try to sign out' do
     sign_in(user)
 
-    page.driver.submit :delete, "/users/sign_out", {} #click_on
-
+    click_on 'Sign out'
     expect(page).to have_content 'Signed out successfully.'
     expect(page).to have_content 'Sign in'
     expect(current_path).to eq root_path
