@@ -18,7 +18,7 @@ feature 'Answer editing', %q{
     expect(page).to_not have_link 'Edit'
   end
 
-  describe 'Authenticated user' do
+  context 'Authenticated user' do
     before do
       sign_in user
 

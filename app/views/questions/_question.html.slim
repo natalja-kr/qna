@@ -1,0 +1,20 @@
+.well
+  h3=@question.title
+  p=@question.body
+  -if user_signed_in? && @question.user == current_user
+    p
+    = link_to 'Edit', '', class: 'edit-question-link button secondary small', data: { questionid: @question.id }
+    = link_to 'Delete', @question, method: :delete, data: { confirm: true }, class: 'button alert small'
+
+  .question-errors
+    = form_for(@question, remote: true, :html => { :class => "form-horizontal edit-question", id: "edit-question-#{@question.id}"}) do |f|
+      .control-group
+        = f.label :title, class: "control-lable"
+        .controls
+          = f.text_field :title
+      .control-group
+        = f.label :body, class: "control-lable"
+        .controls
+          = f.text_area :body
+      .control-group
+        = f.submit 'Update', class: 'btn btn-primary'
