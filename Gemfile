@@ -32,6 +32,7 @@ gem 'devise'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+gem 'carrierwave'
 
 group :test, :development do
   gem 'rspec-rails'
