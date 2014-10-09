@@ -6,7 +6,6 @@ class AnswersController < ApplicationController
     unless @answer.save
       flash[:notice] = @answer.errors.full_messages
     end
-    #redirect_to question_path(@question)
   end
 
   def update
