@@ -1,6 +1,10 @@
 .well
   h3=@question.title
   p=@question.body
+  p Attachments:
+  ul
+    - @question.attachments.each do |a|
+      li= a.file.file.filename
   -if user_signed_in? && @question.user == current_user
     p
     = link_to 'Edit', '', class: 'edit-question-link button secondary small', data: { questionid: @question.id }

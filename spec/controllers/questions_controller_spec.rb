@@ -38,13 +38,18 @@ RSpec.describe QuestionsController, :type => :controller do
 
     before { get :new }
 
-    it 'assigns a new Question to @question' do
+    it 'assigns a new Question for @question' do
+      expect(assigns(:question).attachments.first).to be_a_new(Attachment)
+    end
+
+    it 'builds new Attachments to @question' do
       expect(assigns(:question)).to be_a_new(Question)
     end
 
     it 'renders new view' do
       expect(response).to render_template :new
     end
+
   end
 
   describe 'GET #edit' do
