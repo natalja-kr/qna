@@ -6,19 +6,17 @@ feature 'Delete answer', %q{
   I want to be able to delete answer
 } do
 
-  given(:user) {create(:user)}
-  given(:question) { create(:question, user: user) }
-  given(:answer) { create(:answer, user: user, question: question) }
+  given!(:user) {create(:user)}
+  given!(:question) { create(:question, user: user) }
+  given!(:answer) { create(:answer, user: user, question: question) }
 
   scenario 'Owner delete answer' do
 
     sign_in(user)
 
     visit question_path(question)
-    within '.answers' do
-      click_on 'Delete'
-    end
-
+    save_and_open_page
+    click_on 'Delete answer'
 
     expect(current_path).to eq questions_path
     expect(page).to have_content 'Your answer successfully delete.'
@@ -27,11 +25,12 @@ feature 'Delete answer', %q{
 
   scenario "The user removes the opponent's answer" do
     sign_in(user)
-    new_answer = create(:answer, question: question, user: create(:user))
-    visit question_path(question)
-    within '.answers' do
-      expect(page).not_to have_link 'Delete'
-    end
+    new_question = create(:question, user: user)
+    new_answer = create(:answer, question: new_question, user: create(:user))
+    visit question_path(new_question)
+
+    expect(page).not_to have_link 'Delete answer'
+
   end
 
 end
