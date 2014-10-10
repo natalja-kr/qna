@@ -18,6 +18,8 @@ class AnswersController < ApplicationController
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy!
+
+    @question = Question.find(params[:question_id])
   end
 
   private
