@@ -1,5 +1,11 @@
 - @question.answers.each do |answer|
   p= answer.body
+  p Attachments:
+  - if answer.attachments.count > 0
+    ul
+      - answer.attachments.each do |a|
+        li= link_to a.file.identifier, a.file.url
+
   - if user_signed_in? && current_user == answer.user
     p
     = link_to 'Edit', '', class: 'edit-answer-link button secondary small', data: { answerid: answer.id }

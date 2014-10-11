@@ -120,6 +120,7 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    remotipart (1.2.1)
     rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
@@ -213,6 +214,7 @@ DEPENDENCIES
   less-rails
   pg
   rails (= 4.1.6)
+  remotipart
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

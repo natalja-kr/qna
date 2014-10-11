@@ -33,6 +33,7 @@ gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
+gem 'remotipart'
 
 group :test, :development do
   gem 'rspec-rails'
