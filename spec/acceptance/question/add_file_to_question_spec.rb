@@ -16,6 +16,8 @@ feature 'Add files to question', %q{
   scenario 'User adds file when ask question' do
     fill_in 'Title', with: "Test question Test question"
     fill_in 'Body', with: "skjksdhfhskfks dksdjkskhds ds dskjdssk"
+
+    click_on 'Add a attachment'
     attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
     click_on 'Create'
 

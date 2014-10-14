@@ -1,17 +1,21 @@
-= form_for(@question,:html => { :class => "form-horizontal"}) do |f|
-  .control-group
-    = f.label :title, class: "control-lable"
-    .controls
+= nested_form_for(@question,:html => { :multipart => true }) do |f|
+  p
+    = f.label :title
+    p
       = f.text_field :title
-  .control-group
-    = f.label :body, class: "control-lable"
-    .controls
+  p
+    = f.label :body
+    p
       = f.text_area :body
   p Attachments:
   p
     = f.fields_for :attachments do |a|
       = a.label :file
       = a.file_field :file
+      = a.link_to_remove "Remove this attachment"
+    p
+    p
+    = f.link_to_add "Add a attachment", :attachments
 
-  .control-group
+  p
     = f.submit 'Create', class: 'btn btn-primary'
