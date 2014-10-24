@@ -5,12 +5,13 @@ ready = ->
   jQuery ->
     $('.edit-answer-link').click ->
       id = $(this).data('answerid');
-      $('#edit-answer-'+id).toggle();
+      $('#edit-answer-' + id).toggle();
       return false;
     $('.edit-question-link').click ->
       id = $(this).data('questionid');
-      $('#edit-question-'+id).toggle();
+      $('#edit-question-' + id).toggle();
       return false;
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
