@@ -1,12 +1,12 @@
 .question
   =render 'question'
-.answers
+.answers data={question_id: "#{@question.id}"}
   =render 'answers'
 
-= nested_form_for [@question, @answer], remote: true, data: { type: :json }, :html => {:class => 'new_answer'} do |f|
+= nested_form_for [@question, @answer], remote: true, :html => {:class => 'new_answer'} do |f|
   = f.label :body, 'Your answer'
   .answer-errors
-  = f.text_area :body
+  = f.text_area :body, :id => 'answer_body'
   p
   = f.fields_for :attachments do |a|
     = a.label :file
@@ -15,3 +15,5 @@
   p
   = f.link_to_add "Add a attachment", :attachments
   = f.submit 'Create'
+
+= subscribe_to "/questions/#{@question.id}/answers"

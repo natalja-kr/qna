@@ -3,17 +3,15 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
-    unless @answer.save
-      flash[:notice] = @answer.errors.full_messages
-    end
 
     respond_to do |format|
       if @answer.save
-        format.html { render partial: 'questions/answers', layout: false }
-        format.json { render json: @answer }
+        format.js do
+          PrivatePub.publish_to "/questions/#{@question.id}/answers", answer: @answer.to_json
+          render nothing: true
+        end
       else
-        format.html { render text: @answer.errors.full_messages.join("\n"), status: :unprocessable_entity }
-        format.json { render json: @answer.errors.full_messages, status: :unprocessable_entity }
+        format.js
       end
     end
   end

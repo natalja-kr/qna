@@ -34,6 +34,8 @@ gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
 gem 'remotipart'
+gem 'private_pub'
+gem 'thin'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'simple_form'
 
